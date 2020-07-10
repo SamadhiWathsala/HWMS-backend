@@ -12,6 +12,7 @@ const treatmentRoute = require('./routes/treatment');
 const authRoute = require('./routes/auth');
 const accountRqstRoute = require('./routes/accountReqst');
 const admissionRoute = require('./routes/admission');
+const helloRote = require('./routes/hello');
 
 
 
@@ -23,9 +24,9 @@ mongoose.connect("mongodb://localhost:27017/mediWard", { useNewUrlParser: true }
 
 */
 
-// mongoose.connect("mongodb+srv://wathsala:WaT@123_@cluster-ndaxh.mongodb.net/mediWard?retryWrites=true&w=majority", { useNewUrlParser: true }, () => {
-//     console.log("CONNECTED WITH mediWard MONGODB")
-// });
+mongoose.connect("mongodb+srv://wathsala:WaT@123_@cluster-ndaxh.mongodb.net/mediWard?retryWrites=true&w=majority", { useNewUrlParser: true }, () => {
+    console.log("CONNECTED WITH mediWard MONGODB")
+});
 
 
 const app = express();
@@ -34,7 +35,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-
+app.use('/', helloRote);
 app.use('/trolley', trolleyRoute);
 app.use('/patients', patientsRoute);
 app.use('/tests', testsRoute);
