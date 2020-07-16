@@ -33,8 +33,8 @@ router.get('/:patientID', async (req, res) => {
 
 
 
-//Add new patient to the ward
-router.post('/admit', requireLogin, async (req, res) => {
+//Add new patient to the ward ****************requireLogin,*****************
+router.post('/admit', async (req, res) => {
 
     try {
 
