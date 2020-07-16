@@ -30,7 +30,7 @@ mongoose.connect("mongodb+srv://wathsala:WaT@123_@cluster-ndaxh.mongodb.net/medi
 
 */
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://wathsala:WaT@123_@cluster-ndaxh.mongodb.net/mediWard?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://wathsala:WaT@123_@cluster-ndaxh.mongodb.net/mediWard?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, () => {
     console.log("CONNECTED WITH mediWard MONGODB")
 });
 

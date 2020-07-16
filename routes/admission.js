@@ -33,8 +33,8 @@ router.get('/:hoName', async (req, res) => {
 
 
 
-//Add new patient to the ward from nurse level
-router.post('/', requireLogin, async (req, res) => {
+//Add new patient to the ward from nurse level **********requireLogin**************
+router.post('/', async (req, res) => {
 
     try {
         const newAdmission = new Admission({
