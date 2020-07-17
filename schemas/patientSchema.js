@@ -12,12 +12,11 @@ module.exports = patientSchemas = mongoose.Schema({
         required: true,
 
     },
-    /*
-    dateOfBirth: {
-        type: Date(),
+    patientAge: {
+        type: String,
         required: true,
-    }
-    */
+
+    },
     address: {
         type: String,
         required: true,

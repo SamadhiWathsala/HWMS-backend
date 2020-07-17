@@ -9,7 +9,7 @@ const { options } = require("./trolley");
 router.get('/', async (req, res) => {
     try {
 
-        const patients = await Patients.find().populate("houseOfficer", "_id userName").sort("patientStatus");
+        const patients = await Patients.find().sort("patientStatus");
         res.json(patients);
 
     }
@@ -44,6 +44,7 @@ router.post('/admit', async (req, res) => {
         const newPatient = new Patients({
             bht: req.body.bht,
             patientName: req.body.patientName,
+            patientAge: req.body.patientAge,
             //dateOfBirth: req.body.quantity,
             address: req.body.address,
             admissionComplain: req.body.admissionComplain,
