@@ -25,8 +25,8 @@ router.post('/', async (req, res) => {
             email: req.body.email,
             userRole: req.body.userRole,
             staffID: req.body.staffID,
-            front: "front",
-            back: "back"
+            front: req.body.front,
+            back: req.body.back
 
         });
 
