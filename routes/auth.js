@@ -67,7 +67,7 @@ router.post('/login', async (req, res) => {
                     if (doMatch) {
                         // res.json({ message: "success sign!" })
                         //create and asign a token
-                        const token = jwt.sign({ _id: saveUser._id, userRole: saveUser.userRole }, JWD_SECRET)
+                        const token = jwt.sign({ _id: saveUser._id, userRole: saveUser.userRole, userName: saveUser.userName }, JWD_SECRET)
                         res.json({ token })
                     }
                     else {
