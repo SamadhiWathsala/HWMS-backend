@@ -8,7 +8,7 @@ const { JWD_SECRET } = require('../key/keys');
 const requireLogin = require("../middleware/requireLogin");
 
 
-router.get('/protected', (req, res) => {
+router.get('/protected', requireLogin, (req, res) => {
     res.send('hello user')
 });
 

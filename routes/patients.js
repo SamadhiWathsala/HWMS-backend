@@ -6,7 +6,7 @@ const requireLogin = require("../middleware/requireLogin");
 const { options } = require("./trolley");
 
 //get all patients from patient collection
-router.get('/', async (req, res) => {
+router.get('/', requireLogin, async (req, res) => {
     try {
 
         const patients = await Patients.find().sort("patientStatus");
