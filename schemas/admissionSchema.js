@@ -38,11 +38,4 @@ module.exports = admissionSchemas = mongoose.Schema({
         type: String,
         required: true
     },
-    houseOfficer: {
-        type: String,
-        required: true
-
-    },
-
-
 });
