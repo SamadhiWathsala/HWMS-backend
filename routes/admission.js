@@ -5,7 +5,7 @@ const Admission = require("../models/Admission");
 const requireLogin = require("../middleware/requireLogin");
 
 //get all admission request from admission collection
-router.get('/', async (req, res) => {
+router.get('/', requireLogin, async (req, res) => {
     try {
 
         const admissions = await Admission.find();
@@ -18,23 +18,9 @@ router.get('/', async (req, res) => {
 });
 
 
-//get admission request of particular house officer from admission collection
-router.get('/:hoName', async (req, res) => {
-    try {
-        const ho = req.params.hoName
-        const admissions = await (await Admission.find()).filter(x => x.houseOfficer
-            === ho);
-        res.json(admissions);
-    }
-    catch (e) {
-        res.json({ message: e })
-    }
-});
 
-
-
-//Add new patient to the ward from nurse level **********requireLogin**************
-router.post('/', async (req, res) => {
+//Add new patient to the ward from nurse level 
+router.post('/', requireLogin, async (req, res) => {
 
     try {
         const newAdmission = new Admission({
@@ -43,7 +29,6 @@ router.post('/', async (req, res) => {
             patientAge: req.body.patientAge,
             address: req.body.address,
             admissionComplain: req.body.admissionComplain,
-            houseOfficer: req.body.houseOfficer,
             guardianName: req.body.guardianName,
             guardianPhone: req.body.guardianPhone
         });
