@@ -2,11 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 const AccountRqst = require("../models/AccountRqst");
+const requireLogin = require("../middleware/requireLogin");
+const verifyAdmin = require("../middleware/verifyAdmin");
 
 
 
 //get all account request 
-router.get('/', async (req, res) => {
+router.get('/', requireLogin, verifyAdmin, async (req, res) => {
     try {
         const accounts = await AccountRqst.find();
         res.json(accounts);
@@ -43,7 +45,7 @@ router.post('/', async (req, res) => {
 
 
 //Delete request data from the database
-router.delete('/:requestID', async (req, res) => {
+router.delete('/:requestID', requireLogin, verifyAdmin, async (req, res) => {
 
     try {
         const requestId = req.params.requestID;

@@ -4,9 +4,11 @@ const router = express.Router();
 const Patients = require("../models/Patients");
 const requireLogin = require("../middleware/requireLogin");
 const { options } = require("./trolley");
+const verifyNurse = require("../middleware/verifyNurse");
+const verifyRole = require("../middleware/verifyRole");
 
 //get all patients from patient collection
-router.get('/', requireLogin, async (req, res) => {
+router.get('/', requireLogin, verifyNurse || verifyRole, async (req, res) => {
     try {
 
         const patients = await Patients.find().sort("patientStatus");
@@ -20,7 +22,7 @@ router.get('/', requireLogin, async (req, res) => {
 
 
 //get a single patients from patients collection
-router.get('/:patientID', async (req, res) => {
+router.get('/:patientID', requireLogin, verifyNurse || verifyRole, async (req, res) => {
     try {
         const patientId = req.params.patientID;
         const patient = await Patients.findById(patientId);
@@ -33,8 +35,8 @@ router.get('/:patientID', async (req, res) => {
 
 
 
-//Add new patient to the ward ****************requireLogin,*****************
-router.post('/admit', async (req, res) => {
+//Add new patient to the ward 
+router.post('/admit', requireLogin, verifyRole, async (req, res) => {
 
     try {
 
@@ -74,7 +76,7 @@ router.post('/admit', async (req, res) => {
 
 
 //updating exsit patient data
-router.put('/:patientID', async (req, res) => {
+router.put('/:patientID', requireLogin, verifyRole, async (req, res) => {
 
     try {
         const patientId = req.params.patientID;

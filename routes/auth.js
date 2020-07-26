@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const { JWD_SECRET } = require('../key/keys');
 const requireLogin = require("../middleware/requireLogin");
 const verifyRole = require("../middleware/verifyRole");
+const verifyAdmin = require("../middleware/verifyAdmin");
 
 
 router.get('/protected', requireLogin, verifyRole, (req, res) => {
@@ -15,7 +16,7 @@ router.get('/protected', requireLogin, verifyRole, (req, res) => {
 
 
 //Add new user to the system
-router.post('/addUser', async (req, res) => {
+router.post('/addUser', requireLogin, async (req, res) => {
 
     try {
 

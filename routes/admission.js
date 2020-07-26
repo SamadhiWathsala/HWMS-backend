@@ -3,9 +3,11 @@ const express = require("express");
 const router = express.Router();
 const Admission = require("../models/Admission");
 const requireLogin = require("../middleware/requireLogin");
+const verifyRole = require("../middleware/verifyRole");
+const verifyNurse = require("../middleware/verifyNurse");
 
 //get all admission request from admission collection
-router.get('/', requireLogin, async (req, res) => {
+router.get('/', requireLogin, verifyRole, async (req, res) => {
     try {
 
         const admissions = await Admission.find();
@@ -20,7 +22,7 @@ router.get('/', requireLogin, async (req, res) => {
 
 
 //Add new patient to the ward from nurse level 
-router.post('/', requireLogin, async (req, res) => {
+router.post('/', requireLogin, verifyNurse, async (req, res) => {
 
     try {
         const newAdmission = new Admission({
@@ -46,7 +48,7 @@ router.post('/', requireLogin, async (req, res) => {
 
 
 //Delete admission request data from the database
-router.delete('/:admissionID', async (req, res) => {
+router.delete('/:admissionID', requireLogin, verifyRole, async (req, res) => {
 
     try {
         const admissionId = req.params.admissionID;
