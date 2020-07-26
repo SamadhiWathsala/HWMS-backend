@@ -6,9 +6,10 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { JWD_SECRET } = require('../key/keys');
 const requireLogin = require("../middleware/requireLogin");
+const verifyRole = require("../middleware/verifyRole");
 
 
-router.get('/protected', requireLogin, (req, res) => {
+router.get('/protected', requireLogin, verifyRole, (req, res) => {
     res.send('hello user')
 });
 

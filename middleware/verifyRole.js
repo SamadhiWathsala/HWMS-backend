@@ -1,35 +1,31 @@
 const jwt = require("jsonwebtoken")
 const { JWD_SECRET } = require("../key/keys")
-const Users = require("../models/User");
+
 
 module.exports = (req, res, next) => {
     var token = req.headers['authorization']
 
     if (token) {
         try {
-            var decoded = jwt.decode(token, req.app.get('jwtTokenSecret'));
+            var decoded = jwt.decode(token, JWD_SECRET);
             if (decoded.exp < Date.now()) {
                 return res.end('token expired', 401);
             }
-            name = decoded.name;
+            role = decoded.userRole;
+
+            if (role == 'HO') {
+                next();
+            } else {
+                return res.status(401).json({ error: "Invalid credentials" })
+            }
+
+
         } catch (err) {
             return res.status(401);
             return res.send('no token');
         }
     }
 
-    const userEntity = new User();
-    userEntity.getUser({
-        name
-    }, (err, user) => {
-        if (user) {
-            return res.status(200).json({
-                name: user.name,
-                score: user.score
-            })
-        } else {
-            return res.status(404).end()
-        }
-    })
+
 
 }
