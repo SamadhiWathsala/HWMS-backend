@@ -16,7 +16,7 @@ router.get('/protected', requireLogin, verifyRole, (req, res) => {
 
 
 //Add new user to the system
-router.post('/addUser', async (req, res) => {
+router.post('/addUser', requireLogin, verifyAdmin, async (req, res) => {
 
     try {
 
