@@ -47,6 +47,19 @@ router.post('/addUser', requireLogin, verifyAdmin, async (req, res) => {
 });
 
 
+//get all users from user collection
+router.get('/allUsers', requireLogin, verifyAdmin, async (req, res) => {
+    try {
+
+        const users = await Users.find();
+        res.json(users);
+
+    }
+    catch (e) {
+        res.json({ message: e })
+    }
+});
+
 
 
 //Login to the system
