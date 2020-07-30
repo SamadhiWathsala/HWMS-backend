@@ -94,6 +94,22 @@ router.post('/login', async (req, res) => {
         })
 
 
+
+    //Delete user from the database
+    router.delete('/:requestID', requireLogin, verifyAdmin, async (req, res) => {
+
+        try {
+            const requestId = req.params.requestID;
+            const deleteRequest = await Users.deleteOne({ _id: requestId });
+            res.json(deleteRequest);
+        }
+        catch (e) {
+            res.json({ message: e })
+        }
+
+    });
+
+
     //res.header('authorization',token)    
 
     //res.send('loged in')
