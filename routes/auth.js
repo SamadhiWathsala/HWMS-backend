@@ -96,12 +96,12 @@ router.post('/login', async (req, res) => {
 
 
     //Delete user from the database
-    router.delete('/:requestID', requireLogin, verifyAdmin, async (req, res) => {
+    router.delete('/:requestID', async (req, res) => {
 
         try {
             const requestId = req.params.requestID;
-            const deleteRequest = await Users.deleteOne({ _id: requestId });
-            res.json(deleteRequest);
+            const deleteUser = await Users.deleteOne({ _id: requestId });
+            res.json(deleteUser);
         }
         catch (e) {
             res.json({ message: e })
