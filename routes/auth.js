@@ -110,6 +110,20 @@ router.post('/login', async (req, res) => {
     });
 
 
+    //get a single test from tests collection
+    router.get('/:userID', async (req, res) => {
+        try {
+            const userId = req.params.userID;
+            const user = await Users.findById(userId);
+            res.json(user);
+        }
+        catch (e) {
+            res.json({ message: e })
+        }
+    });
+
+
+
     //res.header('authorization',token)    
 
     //res.send('loged in')
