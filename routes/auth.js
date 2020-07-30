@@ -96,10 +96,10 @@ router.post('/login', async (req, res) => {
 
 
     //Delete user from the database
-    router.delete('/:requestID', async (req, res) => {
+    router.delete('/:userID', async (req, res) => {
 
         try {
-            const requestId = req.params.requestID;
+            const requestId = req.params.userID;
             const deleteUser = await Users.deleteOne({ _id: requestId });
             res.json(deleteUser);
         }
