@@ -2,11 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 const Trolley = require("../models/Trolley");
-
-
+const requireLogin = require("../middleware/requireLogin");
+const verifyRole = require("../middleware/verifyRole");
+const verifyAdmin = require("../middleware/verifyAdmin");
+const verifyNurse = require("../middleware/verifyNurse");
 
 //get all item from emergency trolley
-router.get('/', async (req, res) => {
+router.get('/', requireLogin, async (req, res) => {
     try {
         let trolley = await Trolley.find();
         res.json(trolley);
@@ -31,14 +33,14 @@ router.get('/:itemID', async (req, res) => {
 
 
 //Add new item to the emergency trolley
-router.post('/', async (req, res) => {
+router.post('/', requireLogin, verifyAdmin, async (req, res) => {
 
     try {
         const trolley = new Trolley({
             itemName: req.body.itemName,
             quantity: req.body.quantity,
             itemStatus: req.body.itemStatus,
-            //expireDate: req.body.quantity,
+            expireDate: req.body.expDate,
         });
 
         const saveItem = await trolley.save();

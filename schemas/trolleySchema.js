@@ -17,11 +17,10 @@ module.exports = trolleySchemas = mongoose.Schema({
         required: true,
 
     },
-    /*
     expireDate: {
-        type: Date,
+        type: String,
         required: true,
     }
-    */
+
 
 });
