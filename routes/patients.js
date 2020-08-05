@@ -9,7 +9,7 @@ const verifyRole = require("../middleware/verifyRole");
 const { decode } = require("jsonwebtoken");
 
 //get all patients from patient collection
-router.get('/', requireLogin, verifyNurse || verifyRole, async (req, res) => {
+router.get('/', requireLogin, verifyRole, async (req, res) => {
     try {
 
         const patients = await Patients.find().sort("patientStatus");
