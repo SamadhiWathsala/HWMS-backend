@@ -69,7 +69,7 @@ router.post('/admit', requireLogin, verifyRole, async (req, res) => {
         res.json({ savePatient });
     }
     catch (e) {
-        res.json({ message: "erorr" })
+        res.json({ message: token })
     }
 
 
