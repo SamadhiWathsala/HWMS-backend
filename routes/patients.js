@@ -6,6 +6,7 @@ const requireLogin = require("../middleware/requireLogin");
 const { options } = require("./trolley");
 const verifyNurse = require("../middleware/verifyNurse");
 const verifyRole = require("../middleware/verifyRole");
+const { decode } = require("jsonwebtoken");
 
 //get all patients from patient collection
 router.get('/', requireLogin, verifyNurse || verifyRole, async (req, res) => {
@@ -41,7 +42,7 @@ router.post('/admit', requireLogin, verifyRole, async (req, res) => {
     try {
 
         let token = req.headers.token;
-
+        let decodeToken = decode(token)
 
         const newPatient = new Patients({
             bht: req.body.bht,
@@ -55,9 +56,9 @@ router.post('/admit', requireLogin, verifyRole, async (req, res) => {
             medicalHistory: req.body.medicalHistory,
             allergicDetails: req.body.allergicDetails,
             houseOfficer: {
-                hoID: token._id,
-                hoName: token.userName,
-                staffID: token.staffID
+                hoID: decodeToken._id,
+                hoName: decodeToken.userName,
+                staffID: decodeToken.staffID
             },
             guardian: req.body.guardian,
             guardianPhone: req.body.guardianPhone
