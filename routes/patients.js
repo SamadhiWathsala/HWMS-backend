@@ -41,7 +41,7 @@ router.post('/admit', requireLogin, verifyRole, async (req, res) => {
 
     try {
 
-        let token = req.header['authorization']
+        let token = req.headers
         let decodeToken = decode(token)
 
         const newPatient = new Patients({
