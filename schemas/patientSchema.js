@@ -44,7 +44,6 @@ module.exports = patientSchemas = mongoose.Schema({
     },
     guardian: {
         type: String,
-        required: true,
     },
 
     guardianPhone: {

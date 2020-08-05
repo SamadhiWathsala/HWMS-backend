@@ -40,14 +40,13 @@ router.post('/admit', requireLogin, verifyRole, async (req, res) => {
 
     try {
 
-        //let token = req.headers.token;
+        let token = req.headers.token;
 
 
         const newPatient = new Patients({
             bht: req.body.bht,
             patientName: req.body.patientName,
             patientAge: req.body.patientAge,
-            //dateOfBirth: req.body.quantity,
             address: req.body.address,
             admissionComplain: req.body.admissionComplain,
             patientCategory: req.body.patientCategory,
@@ -55,7 +54,11 @@ router.post('/admit', requireLogin, verifyRole, async (req, res) => {
             sergicalHistory: req.body.sergicalHistory,
             medicalHistory: req.body.medicalHistory,
             allergicDetails: req.body.allergicDetails,
-            houseOfficer: req.body.houseOfficer,
+            houseOfficer: {
+                hoID: token._id,
+                hoName: token.userName,
+                staffID: token.staffID
+            },
             guardian: req.body.guardian,
             guardianPhone: req.body.guardianPhone
             //addmissionDate: Date.now,
