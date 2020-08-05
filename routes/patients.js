@@ -55,11 +55,7 @@ router.post('/admit', requireLogin, verifyRole, async (req, res) => {
             sergicalHistory: req.body.sergicalHistory,
             medicalHistory: req.body.medicalHistory,
             allergicDetails: req.body.allergicDetails,
-            houseOfficer: {
-                hoID: decodeToken._id,
-                hoName: decodeToken.userName,
-                staffID: decodeToken.staffID
-            },
+
             guardian: req.body.guardian,
             guardianPhone: req.body.guardianPhone
             //addmissionDate: Date.now,
