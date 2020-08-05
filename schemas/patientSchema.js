@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const Users = require("../models/User");
 module.exports = patientSchemas = mongoose.Schema({
 
     bht: {
@@ -51,7 +51,8 @@ module.exports = patientSchemas = mongoose.Schema({
     },
 
     houseOfficer: {
-        type: Object,
+        type: mongoose.Types.ObjectId,
+        ref: Users,
         required: true
     },
 
