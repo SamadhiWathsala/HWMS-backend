@@ -25,7 +25,7 @@ router.get('/', requireLogin, verifyNurse || verifyRole, async (req, res) => {
 //get patients who are added by particular house officer
 router.get('/myPatients/:hoID', requireLogin, verifyRole, async (req, res) => {
     try {
-        const patients = await Patients.find({ houseOfficer: req.params.hoID });
+        const patients = await Patients.find({ houseOfficer: req.params.hoID }).sort("patientStatus");
         res.json(patients)
     }
     catch (e) {
