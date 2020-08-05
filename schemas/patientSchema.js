@@ -52,7 +52,7 @@ module.exports = patientSchemas = mongoose.Schema({
     },
 
     houseOfficer: {
-        type: String,
+        type: Object,
         required: true
     },
 

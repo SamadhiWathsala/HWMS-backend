@@ -5,7 +5,7 @@ const Trolley = require("../models/Trolley");
 const requireLogin = require("../middleware/requireLogin");
 const verifyRole = require("../middleware/verifyRole");
 const verifyAdmin = require("../middleware/verifyAdmin");
-const verifyNurse = require("../middleware/verifyNurse");
+
 
 //get all item from emergency trolley
 router.get('/', requireLogin, async (req, res) => {
