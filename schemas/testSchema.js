@@ -16,7 +16,6 @@ module.exports = testSchemas = mongoose.Schema({
         type: String,
         required: true,
     },
-
     testCategory: {
         type: String,
         required: true,
@@ -24,7 +23,6 @@ module.exports = testSchemas = mongoose.Schema({
     testName: {
         type: String,
         required: true,
-
     },
     testDescription: {
         type: String,
@@ -34,6 +32,14 @@ module.exports = testSchemas = mongoose.Schema({
         type: String,
         required: true,
     },
+    collectionState: {
+        type: String,
+        required: true,
+    },
+    fastingHours: {
+        type: String,
+        required: true,
+    }
 
 
 

@@ -56,8 +56,9 @@ router.post('/', requireLogin, verifyRole, async (req, res) => {
             testStatus: req.body.testStatus,
             patientID: req.body.patientID,
             patientName: req.body.patientName,
-            address: req.body.patientAddress
-
+            address: req.body.patientAddress,
+            collectionState: req.body.collectionState,
+            fastingHours: req.body.fastingHours
         });
 
         const saveTest = await newTest.save();
