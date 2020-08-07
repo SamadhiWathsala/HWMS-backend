@@ -48,13 +48,15 @@ router.post('/', async (req, res) => {
 
     try {
         const newTest = new Test({
-            bht: req.body.bht,
-            patientName: req.body.patientName,
-            //dateOfBirth: req.body.quantity,
             testCategory: req.body.testCategory,
             testName: req.body.testName,
             testDescription: req.body.testDescription,
             testStatus: req.body.testStatus,
+            patient: {
+                _id: req.body.patientId,
+                patientName: req.body.patientName,
+                address: req.body.patientAddress
+            }
         });
 
         const saveTest = await newTest.save();
