@@ -2,6 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 const Test = require("../models/Test");
+const requireLogin = require("../middleware/requireLogin");
+const verifyRole = require("../middleware/verifyRole");
 
 
 //data according to their status and category
@@ -44,7 +46,7 @@ router.get('/:testID', async (req, res) => {
 
 
 //Request a new test
-router.post('/', async (req, res) => {
+router.post('/', requireLogin, verifyRole, async (req, res) => {
 
     try {
         const newTest = new Test({
