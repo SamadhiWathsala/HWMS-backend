@@ -3,22 +3,20 @@ const mongoose = require('mongoose');
 
 module.exports = testSchemas = mongoose.Schema({
 
-    patient: {
-        type: mongoose.Types.ObjectId,
-        // ref: Patients,
-        patientID: {
-            type: String,
-            required: true,
-        },
-        patientName: {
-            type: String,
-            required: true,
-        },
-        address: {
-            type: String,
-            required: true,
-        }
+
+    patientID: {
+        type: String,
+        required: true,
     },
+    patientName: {
+        type: String,
+        required: true,
+    },
+    address: {
+        type: String,
+        required: true,
+    },
+
     testCategory: {
         type: String,
         required: true,

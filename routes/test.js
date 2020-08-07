@@ -52,11 +52,10 @@ router.post('/', async (req, res) => {
             testName: req.body.testName,
             testDescription: req.body.testDescription,
             testStatus: req.body.testStatus,
-            patient: {
-                patientID: req.body.bht,
-                patientName: req.body.patientName,
-                address: req.body.patientAddress
-            }
+            patientID: req.body.patientID,
+            patientName: req.body.patientName,
+            address: req.body.patientAddress
+
         });
 
         const saveTest = await newTest.save();
