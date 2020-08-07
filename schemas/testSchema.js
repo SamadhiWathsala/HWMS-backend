@@ -1,12 +1,23 @@
 const mongoose = require('mongoose');
-const Patients = require("../models/Patients");
+// const Patients = require("../models/Patients");
 
 module.exports = testSchemas = mongoose.Schema({
 
     patient: {
         type: mongoose.Types.ObjectId,
-        ref: Patients,
-        required: true
+        // ref: Patients,
+        patientID: {
+            type: String,
+            required: true,
+        },
+        patientName: {
+            type: String,
+            required: true,
+        },
+        address: {
+            type: String,
+            required: true,
+        }
     },
     testCategory: {
         type: String,
