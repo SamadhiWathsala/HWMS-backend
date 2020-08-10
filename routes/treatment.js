@@ -37,6 +37,7 @@ router.post('/', async (req, res) => {
         const newTreatment = new Treatment({
             bht: req.body.bht,
             patientName: req.body.patientName,
+            patientID: req.body.patientID,
             //requestedDate: req.body.requestedDate,
             treatmentType: req.body.treatmentType,
             drugDetails: req.body.drugDetails,

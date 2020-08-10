@@ -27,6 +27,10 @@ module.exports = treatmentSchemas = mongoose.Schema({
         required: true,
 
     },
+    patientID: {
+        type: String,
+        required: true,
+    }
     /*
     treatTime: {
         type: String,
