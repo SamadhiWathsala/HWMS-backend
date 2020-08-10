@@ -2,6 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 const Treatment = require("../models/Treatment");
+const requireLogin = require("../middleware/requireLogin");
+const verifyRole = require("../middleware/verifyRole");
 
 
 
@@ -31,7 +33,7 @@ router.get('/:treatmentID', async (req, res) => {
 
 
 //Request a new treatment
-router.post('/', async (req, res) => {
+router.post('/', requireLogin, verifyRole, async (req, res) => {
 
     try {
         const newTreatment = new Treatment({
