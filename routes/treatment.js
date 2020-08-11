@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 router.get('/treats/:pID', async (req, res) => {
     try {
         const patientID = req.params.pID
-        const treatments = await (await Treatment.find(patientID)).filter(x => x.treatmentStatus === "In progress");
+        const treatments = await (await Treatment.find()).filter(x => x.treatmentStatus === "In progress" && x.patientID === patientID);
         res.json(treatments);
     }
     catch (e) {
