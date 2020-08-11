@@ -2,22 +2,19 @@ const mongoose = require('mongoose');
 
 module.exports = treatmentSchemas = mongoose.Schema({
 
-    bht: {
-        type: String,
-        required: true,
 
-    },
     patientName: {
         type: String,
         required: true,
-
     },
-    /*
-    requestedDate: {
-        type: Date(),
+    patientID: {
+        type: String,
         required: true,
-    }
-    */
+    },
+    address: {
+        type: String,
+        required: true,
+    },
     treatmentType: {
         type: String,
         required: true,
@@ -25,18 +22,24 @@ module.exports = treatmentSchemas = mongoose.Schema({
     drugDetails: {
         type: String,
         required: true,
-
     },
-    patientID: {
+    treatmentStatus: {
         type: String,
         required: true,
-    }
-    /*
+    },
     treatTime: {
         type: String,
         required: true,
     },
-    */
+    fastingHour: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    }
+
 
 
 

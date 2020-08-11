@@ -37,13 +37,15 @@ router.post('/', requireLogin, verifyRole, async (req, res) => {
 
     try {
         const newTreatment = new Treatment({
-            bht: req.body.bht,
-            patientName: req.body.patientName,
             patientID: req.body.patientID,
-            //requestedDate: req.body.requestedDate,
+            patientName: req.body.patientName,
+            address: req.body.patientAddress,
             treatmentType: req.body.treatmentType,
             drugDetails: req.body.drugDetails,
-            //treatTime: req.body.treatTime,
+            treatmentStatus: req.body.treatmentStatus,
+            treatTime: req.body.treatTime,
+            fastingHour: req.body.fastingHour,
+            description: req.body.description
         });
 
         const saveTreatment = await newTreatment.save();
