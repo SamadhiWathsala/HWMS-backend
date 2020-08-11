@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 
 
 //get all treatment details for particular patient
-router.get('/treats/:pID', async (req, res) => {
+router.get('/:pID/treats', async (req, res) => {
     try {
         const patientID = req.params.pID
         const treatments = await (await Treatment.find()).filter(x => x.treatmentStatus === "In progress" && x.patientID === patientID);
