@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-module.exports = treatmentSchemas = mongoose.Schema({
+module.exports = chartRqstSchema = mongoose.Schema({
 
 
     patientName: {
