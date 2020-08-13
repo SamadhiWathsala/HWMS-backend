@@ -4,6 +4,17 @@ const router = express.Router();
 const ChartRqst = require("../models/ChartRqst");
 
 
+//get all chart request detail from chartRequest collection
+router.get('/', async (req, res) => {
+    try {
+        const charts = await Treatment.find();
+        res.json(treatments);
+    }
+    catch (e) {
+        res.json({ message: e })
+    }
+});
+
 //Request a new chart
 router.post('/', async (req, res) => {
 
