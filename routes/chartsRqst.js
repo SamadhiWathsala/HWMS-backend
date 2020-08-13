@@ -7,7 +7,7 @@ const verifyRole = require("../middleware/verifyRole");
 
 
 //Request a new chart
-router.post('/', requireLogin, verifyRole, async (req, res) => {
+router.post('/', async (req, res) => {
 
     try {
         const newChartRqst = new ChartRqst({
