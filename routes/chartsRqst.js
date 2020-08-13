@@ -2,12 +2,10 @@ const express = require("express");
 
 const router = express.Router();
 const ChartRqst = require("../models/ChartRqst");
-const requireLogin = require("../middleware/requireLogin");
-const verifyRole = require("../middleware/verifyRole");
 
 
 //Request a new chart
-router.post('/', async (req, res) => {
+router.post('/request', async (req, res) => {
 
     try {
         const newChartRqst = new ChartRqst({
