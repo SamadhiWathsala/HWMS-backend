@@ -13,6 +13,7 @@ const authRoute = require('./routes/auth');
 const accountRqstRoute = require('./routes/accountReqst');
 const admissionRoute = require('./routes/admission');
 const helloRote = require('./routes/hello');
+const chartRqstRoute = require('./routes/chartsRqst')
 
 
 
@@ -48,6 +49,7 @@ app.use('/treatment', treatmentRoute);
 app.use('/auth', authRoute);
 app.use('/accRqst', accountRqstRoute);
 app.use('/admission', admissionRoute);
+app.use('/chartRqst', chartRqstRoute);
 
 
 app.listen(port, () => { console.log(`running on PORT ${{ port }}`) });
