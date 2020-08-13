@@ -5,7 +5,7 @@ const ChartRqst = require("../models/ChartRqst");
 
 
 //Request a new chart
-router.post('/request', async (req, res) => {
+router.post('/', async (req, res) => {
 
     try {
         const newChartRqst = new ChartRqst({
