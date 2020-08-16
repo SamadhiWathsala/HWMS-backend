@@ -7,6 +7,7 @@ const { options } = require("./trolley");
 const verifyNurse = require("../middleware/verifyNurse");
 const verifyRole = require("../middleware/verifyRole");
 const { decode } = require("jsonwebtoken");
+const verifyHO = require("../middleware/verifyHO");
 
 //get all patients from patient collection
 router.get('/', requireLogin, verifyRole, async (req, res) => {
@@ -23,7 +24,7 @@ router.get('/', requireLogin, verifyRole, async (req, res) => {
 
 
 //get patients who are added by particular house officer
-router.get('/myPatients/:hoID', requireLogin, verifyRole, async (req, res) => {
+router.get('/myPatients/:hoID', requireLogin, verifyHO, async (req, res) => {
     try {
         const patients = await Patients.find({ houseOfficer: req.params.hoID }).sort("patientStatus");
         res.json(patients)
@@ -49,7 +50,7 @@ router.get('/:patientID', requireLogin, verifyRole, async (req, res) => {
 
 
 //Add new patient to the ward 
-router.post('/admit', requireLogin, verifyRole, async (req, res) => {
+router.post('/admit', requireLogin, verifyHO, async (req, res) => {
 
     try {
 
