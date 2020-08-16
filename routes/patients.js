@@ -7,9 +7,10 @@ const { options } = require("./trolley");
 const verifyNurse = require("../middleware/verifyNurse");
 const verifyRole = require("../middleware/verifyRole");
 const { decode } = require("jsonwebtoken");
+const verifystaff = require("../middleware/verifystaff");
 
 //get all patients from patient collection
-router.get('/', requireLogin, verifyRole, async (req, res) => {
+router.get('/', requireLogin, verifystaff, async (req, res) => {
     try {
 
         const patients = await Patients.find().sort("patientStatus");
