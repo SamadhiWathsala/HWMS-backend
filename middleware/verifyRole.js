@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
             }
             role = decoded.userRole;
 
-            if (role == 'HO' || role == 'Nurse') {
+            if (role == 'HO') {
                 next();
             } else {
                 return res.status(401).json({ error: "Invalid credentials" })
