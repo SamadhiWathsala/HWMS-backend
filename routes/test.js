@@ -4,13 +4,14 @@ const router = express.Router();
 const Test = require("../models/Test");
 const requireLogin = require("../middleware/requireLogin");
 const verifyRole = require("../middleware/verifyRole");
+const verifystaff = require("../middleware/verifystaff");
 
 
 //data according to their status and category
 //get all tests from test collection
-router.get('/', async (req, res) => {
+router.get('/', verifystaff, async (req, res) => {
     try {
-        const tests = await (await Test.find()).filter(x => x.testCategory === "Urine" && x.testStatus === "Pending");
+        const tests = await (await Test.find()).filter(x.testStatus === "Pending");
         res.json(tests);
     }
     catch (e) {
