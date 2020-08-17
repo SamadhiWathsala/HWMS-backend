@@ -9,7 +9,7 @@ const verifystaff = require("../middleware/verifystaff");
 
 //data according to their status and category
 //get all tests from test collection
-router.get('/', verifystaff, async (req, res) => {
+router.get('/', requireLogin, verifystaff, async (req, res) => {
     try {
         const tests = await (await Test.find()).filter(x.testStatus === "Pending");
         res.json(tests);
