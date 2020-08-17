@@ -36,7 +36,7 @@ router.get('/myPatients/:hoID', requireLogin, verifyRole, async (req, res) => {
 
 
 //get a single patients from patients collection
-router.get('/:patientID', requireLogin, verifyRole, async (req, res) => {
+router.get('/:patientID', requireLogin, verifystaff, async (req, res) => {
     try {
         const patientId = req.params.patientID;
         const patient = await Patients.findById(patientId);
