@@ -11,7 +11,7 @@ const verifystaff = require("../middleware/verifystaff");
 //get all tests from test collection
 router.get('/', requireLogin, verifystaff, async (req, res) => {
     try {
-        const tests = await (await Test.find()).filter(x.testStatus == "Pending");
+        const tests = await Test.find().filter(x.testStatus == "Pending");
         res.json(tests);
     }
     catch (e) {
