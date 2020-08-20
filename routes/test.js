@@ -21,24 +21,10 @@ router.get('/', requireLogin, verifystaff, async (req, res) => {
 
 
 //get all treatment details for particular patient
-router.get('/:pID/tests', async (req, res) => {
+router.get('/:pID/Tests', async (req, res) => {
     try {
         const patientId = req.params.pID
         const tests = await (await Treatment.find()).filter(x.patientID === patientId);
-        res.json(tests);
-    }
-    catch (e) {
-        res.json({ message: e })
-    }
-});
-
-
-
-//fetch all test of particular patient
-router.get('/patient/:bht', async (req, res) => {
-    try {
-        const patientBHT = req.params.bht
-        const tests = await (await Test.find()).filter(x => x.bht === patientBHT);
         res.json(tests);
     }
     catch (e) {
