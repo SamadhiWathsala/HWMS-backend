@@ -21,7 +21,7 @@ router.get('/', requireLogin, verifystaff, async (req, res) => {
 
 
 //get all test details for particular patient
-router.get('/:pID/Tests', async (req, res) => {
+router.get('/:pID/Tests', requireLogin, verifystaff, async (req, res) => {
     try {
         const patientId = req.params.pID
         const patientTest = await (await Test.find()).filter(x => x.patientID == patientId);
