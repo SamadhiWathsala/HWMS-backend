@@ -24,7 +24,7 @@ router.get('/', requireLogin, verifystaff, async (req, res) => {
 router.get('/:pID/Tests', async (req, res) => {
     try {
         const patientId = req.params.pID
-        const patientTest = await (await Test.find()).filter(x.patientID == patientId);
+        const patientTest = await (await Test.find()).filter(x => x.patientID == patientId);
         res.json(patientTest);
     }
     catch (e) {
