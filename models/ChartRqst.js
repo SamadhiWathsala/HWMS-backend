@@ -1,8 +1,8 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-// const chartRqstSchema = require("../schemas/chartRqstSchema");
+const chartRqstSchema = require("../schemas/chartRqstSchema");
 
 
-// const ChartRqst = mongoose.model('ChartRqst', chartRqstSchema);
+const ChartRqst = mongoose.model('ChartRqst', chartRqstSchema);
 
-// module.exports = ChartRqst;
+module.exports = ChartRqst;
