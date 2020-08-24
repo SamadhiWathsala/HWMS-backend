@@ -2,7 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
+const port_number = server.listen(process.env.PORT || 3000);
 
 //Routes
 const trolleyRoute = require('./routes/trolley');
@@ -52,4 +53,4 @@ app.use('/admission', admissionRoute);
 app.use('/chartRqsts', chartRqstRoute);
 
 
-app.listen(port, () => { console.log(`running on PORT ${{ port }}`) });
+app.listen(port_number, () => { console.log(`running on PORT ${{ port_number }}`) });
