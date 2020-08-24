@@ -42,7 +42,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.use('/', helloRote);
+
 app.use('/trolley', trolleyRoute);
 app.use('/patients', patientsRoute);
 app.use('/tests', testsRoute);
