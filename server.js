@@ -17,11 +17,12 @@ const helloRote = require('./routes/hello');
 // const chartRqstRoute = require('./routes/chartsRqst');
 
 
-
 //connect to mongodb database using mongoose
 /*
 mongoose.connect("mongodb://localhost:27017/mediWard", { useNewUrlParser: true }, () => {
-    console.log("CONNECTED WITH mediWard MONGODB")
+
+    console.log("CONNECTED WITH mediWard MONGODB");
+    
 });
 
 
@@ -51,6 +52,4 @@ app.use('/auth', authRoute);
 app.use('/accRqst', accountRqstRoute);
 app.use('/admission', admissionRoute);
 // app.use('/chartRqsts', chartRqstRoute);
-
-
 app.listen(port, () => { console.log(`running on PORT ${{ port }}`) });

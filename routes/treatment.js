@@ -57,7 +57,8 @@ router.post('/', requireLogin, verifyRole, async (req, res) => {
             treatmentStatus: req.body.treatmentStatus,
             treatTime: req.body.treatTime,
             fastingHour: req.body.fastingHour,
-            description: req.body.description
+            description: req.body.description,
+            treatTaskStatus: req.body.treatTaskStatus
         });
 
         const saveTreatment = await newTreatment.save();
