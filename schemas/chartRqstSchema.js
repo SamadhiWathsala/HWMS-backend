@@ -2,7 +2,6 @@
 
 // module.exports = chartRqstSchema = mongoose.Schema({
 
-
 //     patientName: {
 //         type: String,
 //         required: true,
@@ -26,8 +25,5 @@
 //     description: {
 //         type: String,
 //     }
-
-
-
 
 // });

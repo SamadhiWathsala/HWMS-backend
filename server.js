@@ -2,8 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-// const port = process.env.PORT || 3000;
-const port_number = server.listen(process.env.PORT || 3000);
+const port = process.env.PORT || 3000;
+// const port_number = server.listen(process.env.PORT || 3000);
 
 //Routes
 const trolleyRoute = require('./routes/trolley');
@@ -14,7 +14,7 @@ const authRoute = require('./routes/auth');
 const accountRqstRoute = require('./routes/accountReqst');
 const admissionRoute = require('./routes/admission');
 const helloRote = require('./routes/hello');
-const chartRqstRoute = require('./routes/chartsRqst');
+// const chartRqstRoute = require('./routes/chartsRqst');
 
 
 
@@ -50,7 +50,7 @@ app.use('/treatment', treatmentRoute);
 app.use('/auth', authRoute);
 app.use('/accRqst', accountRqstRoute);
 app.use('/admission', admissionRoute);
-app.use('/chartRqsts', chartRqstRoute);
+// app.use('/chartRqsts', chartRqstRoute);
 
 
-app.listen(port_number, () => { console.log(`running on PORT ${{ port_number }}`) });
+app.listen(port, () => { console.log(`running on PORT ${{ port }}`) });
