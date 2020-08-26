@@ -27,16 +27,16 @@ router.post('/addUser', requireLogin, verifyAdmin, async (req, res) => {
         if (emailExist) return res.status(400).send('Email allready exist')
 
         else {
-            const newUser = new Users({
-                userName: req.body.userName,
-                stafID: req.body.staffID,
-                email: req.body.email,
-                password: bcrypt.hashSync(req.body.password, 12),
-                userRole: req.body.role,
-            });
-            console.log(req.body);
-            const saveUser = await newUser.save();
-            res.json({ saveUser });
+            // const newUser = new Users({
+            //     userName: req.body.userName,
+            //     stafID: req.body.staffID,
+            //     email: req.body.email,
+            //     password: bcrypt.hashSync(req.body.password, 12),
+            //     userRole: req.body.role,
+            // });
+            // console.log(req.body);
+            // const saveUser = await newUser.save();
+            // res.json({ saveUser });
 
             // create reusable transporter object using the default SMTP transport
             let transporter = nodemailer.createTransport({
