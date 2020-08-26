@@ -9,6 +9,7 @@ const { JWD_SECRET } = require('../key/keys');
 const requireLogin = require("../middleware/requireLogin");
 const verifyRole = require("../middleware/verifyRole");
 const verifyAdmin = require("../middleware/verifyAdmin");
+const { getMaxListeners } = require("../models/User");
 
 
 router.get('/protected', requireLogin, verifyRole, (req, res) => {
@@ -17,7 +18,7 @@ router.get('/protected', requireLogin, verifyRole, (req, res) => {
 
 
 //Add new user to the system
-router.post('/addUser', requireLogin, verifyAdmin, async (req, res) => {
+router.post('/addUser', async (req, res) => {
 
     try {
 
@@ -53,22 +54,22 @@ router.post('/addUser', requireLogin, verifyAdmin, async (req, res) => {
             // send mail with defined transport object
             let info = await transporter.sendMail({
                 from: '"Medi Ward Team 👻" <samadhiwathsala96@gmail.com>', // sender address
-                to: req.body.email, // list of receivers
+                to: 'sanjunet10@gmail.com', // list of receivers
                 subject: `Welcome to the MEDIWARD`, // Subject line
-                text: `Hi ${req.body.userName},
+                text: `Hi sama,
     
                 Congratulations !!! your account request approved by the system. Now you account is ready for you.
                 account credentials
-                staff ID : ${req.body.staffID},
-                password : ${req.body.staffID}
+                staff ID : 12,
+                password : 12
                 
                 After the first login, be sure to reset your passsword as you wish...!!!` , // plain text body
-                html: `<b>Hi ${req.body.userName}</b>,
+                html: `<b>Hi sama</b>,
     
                 Congratulations !!! your account request approved by the system. Now you account is ready for you.
                 account credentials
-                staff ID : ${req.body.staffID},
-                password : ${req.body.staffID}
+                staff ID : 12,
+                password : 12
                 
                 <strong>After the first login, be sure to reset your passsword as you wish...!!!</strong>`, // html body
             });
