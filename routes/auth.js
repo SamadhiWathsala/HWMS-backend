@@ -47,7 +47,7 @@ router.post('/addUser', async (req, res) => {
                 service: 'gmail',
                 auth: {
                     user: 'samadhiwathsala96@gmail.com', // generated ethereal user
-                    pass: 'SaM@123_', // generated ethereal password
+                    pass: '19@@96@@', // generated ethereal password
                 },
             });
 
