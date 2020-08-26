@@ -72,6 +72,8 @@ router.post('/addUser', requireLogin, verifyAdmin, async (req, res) => {
             <strong>After the first login, be sure to reset your passsword as you wish...!!!</strong>`, // html body
         });
 
+        console.log("Message sent: %s", info.messageId);
+
     }
     catch (e) {
         res.json({ message: e })
