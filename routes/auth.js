@@ -1,4 +1,5 @@
 const express = require("express");
+const nodemailer = require("nodemailer");
 
 const router = express.Router();
 const Users = require("../models/User");
@@ -36,6 +37,40 @@ router.post('/addUser', requireLogin, verifyAdmin, async (req, res) => {
         const saveUser = await newUser.save();
         res.json({ saveUser });
 
+        // create reusable transporter object using the default SMTP transport
+        let transporter = nodemailer.createTransport({
+            // host: "smtp.ethereal.email",
+            // port: 587,
+            // secure: false, // true for 465, false for other ports
+            service: 'gmail',
+            auth: {
+                user: 'samadhiwathsala96@gmail.com', // generated ethereal user
+                pass: 'SaM@123_', // generated ethereal password
+            },
+        });
+
+        // send mail with defined transport object
+        let info = await transporter.sendMail({
+            from: '"Medi Ward Team 👻" <samadhiwathsala96@gmail.com>', // sender address
+            to: req.body.email, // list of receivers
+            subject: `Welcome to the MEDIWARD`, // Subject line
+            text: `Hi ${req.body.userName},
+
+            Congratulations !!! your account request approved by the system. Now you account is ready for you.
+            account credentials
+            staff ID : ${req.body.staffID},
+            password : ${req.body.staffID}
+            
+            After the first login, be sure to reset your passsword as you wish...!!!` , // plain text body
+            html: `<b>Hi ${req.body.userName}</b>,
+
+            Congratulations !!! your account request approved by the system. Now you account is ready for you.
+            account credentials
+            staff ID : ${req.body.staffID},
+            password : ${req.body.staffID}
+            
+            <strong>After the first login, be sure to reset your passsword as you wish...!!!</strong>`, // html body
+        });
 
     }
     catch (e) {

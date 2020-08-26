@@ -17,6 +17,8 @@ const helloRote = require('./routes/hello');
 // const chartRqstRoute = require('./routes/chartsRqst');
 
 
+// const mailService = require('./mails/index')
+
 //connect to mongodb database using mongoose
 /*
 mongoose.connect("mongodb://localhost:27017/mediWard", { useNewUrlParser: true }, () => {
@@ -41,7 +43,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+// app.use(mailService)
 
 
 app.use('/trolley', trolleyRoute);
@@ -52,4 +54,7 @@ app.use('/auth', authRoute);
 app.use('/accRqst', accountRqstRoute);
 app.use('/admission', admissionRoute);
 // app.use('/chartRqsts', chartRqstRoute);
+
+
+
 app.listen(port, () => { console.log(`running on PORT ${{ port }}`) });

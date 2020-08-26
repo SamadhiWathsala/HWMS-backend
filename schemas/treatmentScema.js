@@ -38,6 +38,10 @@ module.exports = treatmentSchemas = mongoose.Schema({
     description: {
         type: String,
         required: true,
+    },
+    treatTaskStatus: {
+        type: String,
+        required: true
     }
 
 
