@@ -46,15 +46,15 @@ router.post('/addUser', async (req, res) => {
                 // secure: false, // true for 465, false for other ports
                 service: 'gmail',
                 auth: {
-                    user: 'sanjunet10@gmail.com', // generated ethereal user
-                    pass: 'SaN@123_', // generated ethereal password
+                    user: 'samadhiwathsala96@gmail.com', // generated ethereal user
+                    pass: '19@@96@@', // generated ethereal password
                 },
             });
 
             // send mail with defined transport object
             let info = await transporter.sendMail({
-                from: '"Medi Ward Team 👻" <sanjunet10@gmail.com>', // sender address
-                to: 'samadhiwathsala96@gmail.com', // list of receivers
+                from: '"Medi Ward Team 👻" <samadhiwathsala96@gmail.com>', // sender address
+                to: 'sanjunet10@gmail.com', // list of receivers
                 subject: `Welcome to the MEDIWARD`, // Subject line
                 text: `Hi sama,
     
