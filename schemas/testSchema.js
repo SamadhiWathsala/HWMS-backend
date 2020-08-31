@@ -41,10 +41,10 @@ module.exports = testSchemas = mongoose.Schema({
         type: String,
         required: true,
     },
-    sampleCollectBy: {
-        type: mongoose.Types.ObjectId,
-        ref: Users,
-    },
+    // sampleCollectBy: {
+    //     type: mongoose.Types.ObjectId,
+    //     ref: Users,
+    // },
 
 
 

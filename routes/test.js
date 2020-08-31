@@ -85,11 +85,11 @@ router.put('/:testID', async (req, res) => {
         const updateTest = await Test.updateOne({ _id: testId }, {
             $set: {
                 testStatus: req.body.testStatus,
-                sampleCollectBy: {
-                    _id: decodeToken._id,
-                    userName: decodeToken.userName,
-                    staffID: decodeToken.staffID
-                },
+                // sampleCollectBy: {
+                //     _id: decodeToken._id,
+                //     userName: decodeToken.userName,
+                //     staffID: decodeToken.staffID
+                // },
             }
         })
         res.json({ updateTest });
