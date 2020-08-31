@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Users = require("../models/User");
 // const Patients = require("../models/Patients");
 
 module.exports = testSchemas = mongoose.Schema({
@@ -39,7 +40,11 @@ module.exports = testSchemas = mongoose.Schema({
     fastingHours: {
         type: String,
         required: true,
-    }
+    },
+    sampleCollectBy: {
+        type: mongoose.Types.ObjectId,
+        ref: Users,
+    },
 
 
 
