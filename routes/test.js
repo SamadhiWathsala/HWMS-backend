@@ -84,12 +84,12 @@ router.put('/:testID', async (req, res) => {
         const testId = req.params.testID;
         const updateTest = await Test.updateOne({ _id: testId }, {
             $set: {
-
-                testCategory: req.body.testCategory,
-                testName: req.body.testName,
-                testDescription: req.body.testDescription,
                 testStatus: req.body.testStatus,
-
+                sampleCollectBy: {
+                    _id: decodeToken._id,
+                    userName: decodeToken.userName,
+                    staffID: decodeToken.staffID
+                },
             }
         })
         res.json({ updateTest });
@@ -97,7 +97,6 @@ router.put('/:testID', async (req, res) => {
     catch (e) {
         res.json({ message: e });
     }
-
 });
 
 
