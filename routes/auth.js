@@ -37,42 +37,6 @@ router.post('/addUser', requireLogin, verifyAdmin, async (req, res) => {
         const saveUser = await newUser.save();
         res.json({ saveUser });
 
-        // // create reusable transporter object using the default SMTP transport
-        // let transporter = nodemailer.createTransport({
-        //     // host: "smtp.ethereal.email",
-        //     // port: 587,
-        //     // secure: false, // true for 465, false for other ports
-        //     service: 'gmail',
-        //     auth: {
-        //         user: 'samadhiwathsala96@gmail.com', // generated ethereal user
-        //         pass: 'SaM@123_', // generated ethereal password
-        //     },
-        // });
-
-        // // send mail with defined transport object
-        // let info = await transporter.sendMail({
-        //     from: '"Medi Ward Team 👻" <samadhiwathsala96@gmail.com>', // sender address
-        //     to: req.body.email, // list of receivers
-        //     subject: `Welcome to the MEDIWARD`, // Subject line
-        //     text: `Hi ${req.body.userName},
-
-        //     Congratulations !!! your account request approved by the system. Now you account is ready for you.
-        //     account credentials
-        //     staff ID : ${req.body.staffID},
-        //     password : ${req.body.staffID}
-
-        //     After the first login, be sure to reset your passsword as you wish...!!!` , // plain text body
-        //     html: `<b>Hi ${req.body.userName}</b>,
-
-        //     Congratulations !!! your account request approved by the system. Now you account is ready for you.
-        //     account credentials
-        //     staff ID : ${req.body.staffID},
-        //     password : ${req.body.staffID}
-
-        //     <strong>After the first login, be sure to reset your passsword as you wish...!!!</strong>`, // html body
-        // });
-
-        // console.log("Message sent: %s", info.messageId);
 
     }
     catch (e) {
@@ -89,6 +53,19 @@ router.get('/allUsers', requireLogin, verifyAdmin, async (req, res) => {
     try {
 
         const users = await Users.find();
+        res.json(users);
+
+    }
+    catch (e) {
+        res.json({ message: e })
+    }
+});
+
+//get all users who role nurse from user collection
+router.get('/nurseStaff', async (req, res) => {
+    try {
+
+        const users = await Users.find({userRole : "Nurse"});
         res.json(users);
 
     }

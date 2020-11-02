@@ -6,12 +6,10 @@ module.exports = userSchemas = mongoose.Schema({
     userName: {
         type: String,
         required: true,
-
     },
     stafID: {
         type: String,
         required: true,
-
     },
     email: {
         type: String,
@@ -25,7 +23,6 @@ module.exports = userSchemas = mongoose.Schema({
         type: String,
         required: true,
     },
-
 
 
 });
